@@ -8,28 +8,33 @@ import re
 from PIL import Image
 
 
+class AIModel:
+    def exec(self):
+        return 0.5
+
+
 def load_model(modelfile):
-    resnet50_url = 'https://tfhub.dev/google/imagenet/resnet_v2_50/feature_vector/5'
-    feature_extractor_layer = hub.KerasLayer(resnet50_url,
-                                               trainable=False, # freeze the underlying patterns
-                                               name='feature_extraction_layer',
-                                               input_shape=(224, 224)+(3,)) # define the input image shap
-
-    resnet_model2 = keras.Sequential([
-        feature_extractor_layer,
-        keras.layers.BatchNormalization(),
-        keras.layers.Dropout(0.2),
-        keras.layers.Dense(1, activation = 'sigmoid'),
-    ])
-
-    metrics = ['accuracy', keras.metrics.AUC(), keras.metrics.Recall()]
-
-    resnet_model2.compile(loss='binary_crossentropy',
-                            metrics = [metrics],
-                            optimizer = adam_v2.Adam(learning_rate = 5e-4))
-
-    resnet_model2.load_weights(modelfile)
-    return resnet_model2
+#    resnet50_url = 'https://tfhub.dev/google/imagenet/resnet_v2_50/feature_vector/5'
+#    feature_extractor_layer = hub.KerasLayer(resnet50_url,
+#                                               trainable=False, # freeze the underlying patterns
+#                                               name='feature_extraction_layer',
+#                                               input_shape=(224, 224)+(3,)) # define the input image shap
+#
+#    resnet_model2 = keras.Sequential([
+#        feature_extractor_layer,
+#        keras.layers.BatchNormalization(),
+#        keras.layers.Dropout(0.2),
+#        keras.layers.Dense(1, activation = 'sigmoid'),
+#    ])
+#
+#    metrics = ['accuracy', keras.metrics.AUC(), keras.metrics.Recall()]
+#
+#    resnet_model2.compile(loss='binary_crossentropy',
+#                            metrics = [metrics],
+#                            optimizer = adam_v2.Adam(learning_rate = 5e-4))
+#
+#    resnet_model2.load_weights(modelfile)
+#    return resnet_model2
 
 def test_picture(model, path):
     df = pd.DataFrame(path, columns = ['Path'])
