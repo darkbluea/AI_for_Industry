@@ -1,16 +1,28 @@
 import streamlit as st
 import keras
+import pickle
 from keras.optimizers import adam_v2
 from keras.preprocessing.image import ImageDataGenerator
+from keras.preprocessing.text import Tokenizer
+from keras.preprocessing.sequence import pad_sequences
 import tensorflow_hub as hub
 import pandas as pd
 import re
 from PIL import Image
+from tensorflow import keras
 
 
 class AIModel:
-    def exec(self):
-        return 0.5
+    
+    def __init__(self):
+	with open('./model/tokenizer.pickle', 'rb') as handle:
+	    self.tokenizer = pickle.load(handle)
+	self.model = keras.models.load_model('./model/model.hdf5')
+	
+    def exec(self, sentences):
+  	X = self.tokenizer.texts_to_sequences(sentences)
+  	X = pad_sequences(X, padding='post', maxlen=250)
+        return self.model.predict(X)
 
 
 def load_model(modelfile):
