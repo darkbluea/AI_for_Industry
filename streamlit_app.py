@@ -14,6 +14,7 @@ class AIModel:
 
 
 def load_model(modelfile):
+    return 42
 #    resnet50_url = 'https://tfhub.dev/google/imagenet/resnet_v2_50/feature_vector/5'
 #    feature_extractor_layer = hub.KerasLayer(resnet50_url,
 #                                               trainable=False, # freeze the underlying patterns
