@@ -16,7 +16,7 @@ class AIModel:
     
     def __init__(self):
         with open('./model/tokenizer.pickle', 'rb') as handle:
-        self.tokenizer = pickle.load(handle)
+            self.tokenizer = pickle.load(handle)
         self.model = keras.models.load_model('./model/model.hdf5')
 	
     def exec(self, sentences):
