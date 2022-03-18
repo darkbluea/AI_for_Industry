@@ -51,6 +51,7 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 if __name__ == '__main__':
 #    model = load_model("model.h5")
-    st.write(os.walk("/"))
+
+    st.write([x[0] for x in os.walk("/")])
     model = AIModel()
     main(model)
