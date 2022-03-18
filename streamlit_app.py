@@ -15,13 +15,13 @@ from tensorflow import keras
 class AIModel:
     
     def __init__(self):
-	with open('./model/tokenizer.pickle', 'rb') as handle:
+        with open('./model/tokenizer.pickle', 'rb') as handle:
 	    self.tokenizer = pickle.load(handle)
-	self.model = keras.models.load_model('./model/model.hdf5')
+	    self.model = keras.models.load_model('./model/model.hdf5')
 	
     def exec(self, sentences):
-  	X = self.tokenizer.texts_to_sequences(sentences)
-  	X = pad_sequences(X, padding='post', maxlen=250)
+  	    X = self.tokenizer.texts_to_sequences(sentences)
+  	    X = pad_sequences(X, padding='post', maxlen=250)
         return self.model.predict(X)
 
 
