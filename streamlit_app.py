@@ -39,9 +39,8 @@ def main(model):
     </div>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
-    st.write(os.walk("/"))
-#    user_input = st.text_input("label goes here", default_value_goes_here)
-#    st.write(model.exec([user_input]))
+    user_input = st.text_input("label goes here", default_value_goes_here)
+    st.write(model.exec([user_input]))
 
 hide_menu_style = """
         <style>
@@ -52,5 +51,6 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 if __name__ == '__main__':
 #    model = load_model("model.h5")
+    st.write(os.walk("/"))
     model = AIModel()
     main(model)
