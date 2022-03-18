@@ -27,27 +27,6 @@ class AIModel:
 
 def load_model(modelfile):
     return 42
-#    resnet50_url = 'https://tfhub.dev/google/imagenet/resnet_v2_50/feature_vector/5'
-#    feature_extractor_layer = hub.KerasLayer(resnet50_url,
-#                                               trainable=False, # freeze the underlying patterns
-#                                               name='feature_extraction_layer',
-#                                               input_shape=(224, 224)+(3,)) # define the input image shap
-#
-#    resnet_model2 = keras.Sequential([
-#        feature_extractor_layer,
-#        keras.layers.BatchNormalization(),
-#        keras.layers.Dropout(0.2),
-#        keras.layers.Dense(1, activation = 'sigmoid'),
-#    ])
-#
-#    metrics = ['accuracy', keras.metrics.AUC(), keras.metrics.Recall()]
-#
-#    resnet_model2.compile(loss='binary_crossentropy',
-#                            metrics = [metrics],
-#                            optimizer = adam_v2.Adam(learning_rate = 5e-4))
-#
-#    resnet_model2.load_weights(modelfile)
-#    return resnet_model2
 
 
 st.set_page_config(page_title="AI for Industry", page_icon="", layout='centered', initial_sidebar_state="collapsed")
@@ -59,6 +38,8 @@ def main(model):
     </div>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
+    user_input = st.text_input("label goes here", default_value_goes_here)
+    st.write(model.exec([user_input]))
 
 hide_menu_style = """
         <style>
@@ -68,5 +49,6 @@ hide_menu_style = """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 if __name__ == '__main__':
-	model = load_model("model.h5")
-	main(model)
+#    model = load_model("model.h5")
+    model = AIModel()
+    main(model)
