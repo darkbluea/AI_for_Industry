@@ -20,8 +20,8 @@ class AIModel:
         self.model = keras.models.load_model('./model/model.hdf5')
 	
     def exec(self, sentences):
-  	    X = self.tokenizer.texts_to_sequences(sentences)
-  	    X = pad_sequences(X, padding='post', maxlen=250)
+        X = self.tokenizer.texts_to_sequences(sentences)
+        X = pad_sequences(X, padding='post', maxlen=250)
         return self.model.predict(X)
 
 
