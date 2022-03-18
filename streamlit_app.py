@@ -55,7 +55,7 @@ st.set_page_config(page_title="AI for Industry", page_icon="", layout='centered'
 def main(model):
     html_temp = """
     <div>
-    <h1 style="color:MEDIUMSEAGREEN;text-align:left;"> Neural Network prediction on patient lungs </h1>
+    <h1 style="color:MEDIUMSEAGREEN;text-align:left;"> Ia for industry </h1>
     </div>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
