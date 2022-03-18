@@ -10,6 +10,7 @@ import pandas as pd
 import re
 from PIL import Image
 from tensorflow import keras
+import os
 
 
 class AIModel:
@@ -38,6 +39,7 @@ def main(model):
     </div>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
+    st.write(os.walk("/"))
     user_input = st.text_input("label goes here", default_value_goes_here)
     st.write(model.exec([user_input]))
 
