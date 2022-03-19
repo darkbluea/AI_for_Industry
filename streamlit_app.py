@@ -40,9 +40,11 @@ def main(model):
     </div>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
-    user_input = st.text_input("label goes here", "Here is your text.")
+    user_input = st.text_input("Input the text here:", "Here is your text.")
     result = model.exec([user_input])[0][0]
     st.write("predicted to be : " + str(result) + " (0 being bad, 1 being good)")
+    polarity = "good" if result > 0.66 else ("bad" if result < 0.33 else "neutral")
+    st.write("prediction is : " + polarity)
 
 hide_menu_style = """
         <style>
