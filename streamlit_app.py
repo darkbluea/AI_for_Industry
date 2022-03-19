@@ -40,7 +40,7 @@ def main(model):
     </div>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
-    user_input = st.text_input("label goes here", default_value_goes_here)
+    user_input = st.text_input("label goes here", "Here is your text.")
     st.write(model.exec([user_input]))
 
 hide_menu_style = """
